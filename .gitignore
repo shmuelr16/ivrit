@@ -6,3 +6,4 @@ editors/vscode/.stage/
 .DS_Store
 .claude/settings.local.json
 דף.html
+*.tgz

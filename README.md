@@ -1,4 +1,8 @@
-# עִבְרִית (Ivrit)
+<p align="center">
+  <img src="docs/logo.png" alt="עברית (Ivrit)" width="440">
+</p>
+
+<h1 align="center">עִבְרִית (Ivrit)</h1>
 
 > שפת תכנות/סימון **בעברית** שמתקמפלת ל-HTML ו-CSS נקיים, ממוקדת RTL מראש.
 
@@ -75,7 +79,7 @@ node bin/ivrit.js serve דף.iv               # שרת חי עם רענון או
 ## 📦 התקנה
 
 ```bash
-npm install -g ivrit      # התקנה גלובלית (מוסיף פקודת ivrit)
+npm install -g ivrit-lang   # התקנה גלובלית (מוסיף פקודת ivrit)
 # או, לפיתוח מקומי:
 npm link
 ```
@@ -235,7 +239,7 @@ cursor --install-extension ivrit-1.0.1.vsix   # ל-Cursor
 ## 🛠️ שימוש כספרייה
 
 ```js
-import { compile, compileFile } from 'ivrit';
+import { compile, compileFile } from 'ivrit-lang';
 
 const { html, css, errors, warnings } = compile('<פסקה>שלום</פסקה>', { file: 'דף.iv' });
 ```

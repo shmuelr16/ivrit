@@ -1,5 +1,5 @@
 {
-  "name": "ivrit",
+  "name": "ivrit-lang",
   "version": "1.0.0",
   "description": "Ivrit (עִבְרִית) - שפת סימון בעברית שמתקמפלת ל-HTML ול-CSS",
   "type": "module",
