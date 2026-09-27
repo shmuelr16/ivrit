@@ -1,0 +1,51 @@
+{
+  "name": "ivrit",
+  "version": "1.0.0",
+  "description": "Ivrit (עִבְרִית) - שפת סימון בעברית שמתקמפלת ל-HTML ול-CSS",
+  "type": "module",
+  "bin": {
+    "ivrit": "./bin/ivrit.js"
+  },
+  "main": "./src/compiler.js",
+  "exports": {
+    ".": "./src/compiler.js",
+    "./dict": "./src/dict.js"
+  },
+  "scripts": {
+    "test": "node --test test/*.test.js",
+    "build": "node bin/ivrit.js build examples/home.iv -o dist/index.html",
+    "serve": "node bin/ivrit.js serve examples/home.iv",
+    "test:ext": "node --test editors/vscode/test/*.test.mjs",
+    "test:all": "node --test test/*.test.js editors/vscode/test/*.test.mjs"
+  },
+  "keywords": [
+    "hebrew",
+    "ivrit",
+    "html",
+    "css",
+    "compiler",
+    "transpiler",
+    "markup",
+    "transliteration"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shmuelr16/ivrit.git"
+  },
+  "homepage": "https://github.com/shmuelr16/ivrit#readme",
+  "bugs": {
+    "url": "https://github.com/shmuelr16/ivrit/issues"
+  },
+  "files": [
+    "bin",
+    "src",
+    "editors/vscode/src",
+    "editors/vscode/syntaxes",
+    "editors/vscode/snippets",
+    "editors/vscode/language-configuration.json",
+    "editors/vscode/scripts",
+    "README.md",
+    "examples"
+  ]
+}

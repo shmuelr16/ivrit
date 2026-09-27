@@ -1,0 +1,8 @@
+node_modules/
+dist/
+*.vsix
+editors/vscode/vendor/
+editors/vscode/.stage/
+.DS_Store
+.claude/settings.local.json
+דף.html

@@ -1,0 +1,41 @@
+{
+  "comments": {
+    "lineComment": "--",
+    "blockComment": ["/*", "*/"]
+  },
+  "brackets": [
+    ["<", ">"],
+    ["{", "}"],
+    ["(", ")"],
+    ["[", "]"]
+  ],
+  "autoClosingPairs": [
+    { "open": "{", "close": "}" },
+    { "open": "(", "close": ")" },
+    { "open": "[", "close": "]" },
+    { "open": "\"", "close": "\"", "notIn": ["string"] },
+    { "open": "'", "close": "'", "notIn": ["string"] },
+    { "open": "<!--", "close": "-->", "notIn": ["comment", "string"] }
+  ],
+  "surroundingPairs": [
+    ["{", "}"],
+    ["(", ")"],
+    ["[", "]"],
+    ["\"", "\""],
+    ["'", "'"]
+  ],
+  "folding": {
+    "markers": {
+      "start": "^\\s*(?:רכיב|פונקציה|סגנון|עיצוב|מסך)\\b.*\\{\\s*$",
+      "end": "^\\s*\\}"
+    }
+  },
+  "wordPattern": "[\\p{L}\\p{N}_-]+",
+  "onEnterRules": [
+    {
+      "beforeText": "<([א-ת\\w-]+)([^<>]*[^/<>])>$",
+      "afterText": "^</([א-ת\\w-]+)>$",
+      "action": { "indent": "indentOutdent" }
+    }
+  ]
+}

@@ -1,0 +1,136 @@
+{
+  "name": "ivrit",
+  "displayName": "עִבְרִית (Ivrit)",
+  "description": "שפת סימון בעברית שמתקמפלת ל-HTML: תחביר, השלמות, בנייה ותצוגה מקדימה",
+  "version": "1.0.1",
+  "publisher": "ivrit-lang",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Snippets"
+  ],
+  "keywords": [
+    "hebrew",
+    "ivrit",
+    "עברית",
+    "html",
+    "rtl"
+  ],
+  "main": "./src/extension.js",
+  "contributes": {
+    "languages": [
+      {
+        "id": "ivrit",
+        "extensions": [
+          ".iv",
+          ".ivrit"
+        ],
+        "aliases": [
+          "Ivrit",
+          "עִבְרִית"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "ivrit",
+        "scopeName": "source.ivrit",
+        "path": "./syntaxes/ivrit.tmLanguage.json"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "ivrit",
+        "path": "./snippets/ivrit.json"
+      }
+    ],
+    "commands": [
+      {
+        "command": "ivrit.open",
+        "title": "עִבְרִית: פתח בדפדפן",
+        "category": "עִבְרִית"
+      },
+      {
+        "command": "ivrit.build",
+        "title": "בנה ל-HTML",
+        "category": "עִבְרִית",
+        "icon": "$(tools)"
+      },
+      {
+        "command": "ivrit.preview",
+        "title": "הצג בתצוגה מקדימה",
+        "category": "עִבְרִית",
+        "icon": "$(open-preview)"
+      },
+      {
+        "command": "ivrit.check",
+        "title": "בדוק קובץ",
+        "category": "עִבְרִית",
+        "icon": "$(check)"
+      },
+      {
+        "command": "ivrit.ltr",
+        "title": "החלף תצוגת קוד שמאל-לימין (LTR)",
+        "category": "עִבְרִית",
+        "icon": "$(arrow-both)"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "ivrit.open",
+        "key": "cmd+alt+r",
+        "mac": "cmd+alt+r"
+      },
+      {
+        "command": "ivrit.preview",
+        "key": "cmd+alt+v",
+        "mac": "cmd+alt+v",
+        "when": "editorTextFocus && editorLangId == ivrit"
+      },
+      {
+        "command": "ivrit.build",
+        "key": "cmd+alt+b",
+        "mac": "cmd+alt+b",
+        "when": "editorTextFocus && editorLangId == ivrit"
+      },
+      {
+        "command": "ivrit.ltr",
+        "key": "cmd+alt+l",
+        "mac": "cmd+alt+l",
+        "when": "editorTextFocus && editorLangId == ivrit"
+      }
+    ],
+    "configuration": {
+      "title": "עִבְרִית",
+      "properties": {
+        "ivrit.build.autoSave": {
+          "type": "boolean",
+          "default": true,
+          "description": "בנייה אוטומטית בכל שמירה (ועדכון התצוגה המקדימה אם היא פתוחה)"
+        },
+        "ivrit.build.outputDir": {
+          "type": "string",
+          "default": "dist",
+          "description": "תיקיית הפלט של הבנייה"
+        },
+        "ivrit.check.showWarnings": {
+          "type": "boolean",
+          "default": true,
+          "description": "הצג גם אזהרות בלוח הבעיות"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vendor": "node scripts/vendor.js",
+    "package": "node scripts/vendor.js && node scripts/make-vsix.js"
+  },
+  "activationEvents": [
+    "onLanguage:ivrit",
+    "onStartupFinished"
+  ]
+}

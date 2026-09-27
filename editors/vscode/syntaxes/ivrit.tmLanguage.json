@@ -1,0 +1,249 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "Ivrit",
+  "scopeName": "source.ivrit",
+  "patterns": [
+    {
+      "include": "#comment"
+    },
+    {
+      "include": "#tag"
+    },
+    {
+      "include": "#css-declaration"
+    },
+    {
+      "include": "#interpolation"
+    },
+    {
+      "include": "#string"
+    },
+    {
+      "include": "#keyword"
+    },
+    {
+      "include": "#builtin"
+    },
+    {
+      "include": "#constant"
+    },
+    {
+      "include": "#operator"
+    },
+    {
+      "include": "#number"
+    }
+  ],
+  "repository": {
+    "comment": {
+      "patterns": [
+        {
+          "name": "comment.line.double-dash.ivrit",
+          "match": "--.*$"
+        },
+        {
+          "name": "comment.line.double-slash.ivrit",
+          "match": "//.*$"
+        },
+        {
+          "name": "comment.block.ivrit",
+          "begin": "/\\*",
+          "end": "\\*/"
+        },
+        {
+          "name": "comment.block.ivrit",
+          "begin": "<!--",
+          "end": "-->"
+        }
+      ]
+    },
+    "string": {
+      "name": "string.quoted.double.ivrit",
+      "begin": "\"",
+      "end": "\"",
+      "patterns": [
+        {
+          "include": "#escape"
+        }
+      ]
+    },
+    "string-single": {
+      "name": "string.quoted.single.ivrit",
+      "begin": "'",
+      "end": "'",
+      "patterns": [
+        {
+          "include": "#escape"
+        }
+      ]
+    },
+    "escape": {
+      "name": "constant.character.escape.ivrit",
+      "match": "\\\\."
+    },
+    "tag": {
+      "patterns": [
+        {
+          "name": "meta.tag.ivrit",
+          "begin": "(</?)([א-תA-Za-z][א-תA-Za-z0-9_-]*)",
+          "beginCaptures": {
+            "1": {
+              "name": "punctuation.definition.tag.begin.ivrit"
+            },
+            "2": {
+              "name": "entity.name.tag.ivrit"
+            }
+          },
+          "end": "(/?>)",
+          "endCaptures": {
+            "1": {
+              "name": "punctuation.definition.tag.end.ivrit"
+            }
+          },
+          "patterns": [
+            {
+              "include": "#tag-attributes"
+            }
+          ]
+        }
+      ]
+    },
+    "tag-attributes": {
+      "patterns": [
+        {
+          "name": "entity.other.attribute-name.ivrit",
+          "match": "[א-תA-Za-z_][א-תA-Za-z0-9_-]*(?=\\s*=)"
+        },
+        {
+          "name": "entity.other.attribute-name.ivrit",
+          "match": "[א-תA-Za-z_][א-תA-Za-z0-9_-]*(?=\\s+(?:[א-תA-Za-z_][א-תA-Za-z0-9_-]*\\s*=\\s*)?$)(?<=[ \\t])"
+        },
+        {
+          "include": "#string"
+        },
+        {
+          "include": "#string-single"
+        },
+        {
+          "include": "#interpolation"
+        },
+        {
+          "name": "string.unquoted.ivrit",
+          "match": "[^\\s\"'=<>`]+"
+        }
+      ]
+    },
+    "interpolation": {
+      "name": "meta.interpolation.ivrit",
+      "begin": "\\{",
+      "end": "\\}",
+      "beginCaptures": {
+        "0": {
+          "name": "punctuation.section.embedded.begin.ivrit"
+        }
+      },
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.section.embedded.end.ivrit"
+        }
+      },
+      "patterns": [
+        {
+          "include": "#keyword"
+        },
+        {
+          "include": "#builtin"
+        },
+        {
+          "include": "#constant"
+        },
+        {
+          "include": "#string"
+        },
+        {
+          "include": "#number"
+        },
+        {
+          "include": "#operator"
+        },
+        {
+          "name": "variable.other.ivrit",
+          "match": "[א-תA-Za-z_][א-תA-Za-z0-9_-]*"
+        }
+      ]
+    },
+    "keyword": {
+      "patterns": [
+        {
+          "name": "keyword.control.ivrit",
+          "match": "(?<![א-תA-Za-z0-9_-])(?:משתנה|קבע|הגדר|אם|אחרת\\s+אם|אחרת-אם|אחרת|לכל|לכל-בטווח|כל-עוד|הפסק|המשך|ברירת-מחדל)(?![א-תA-Za-z0-9_-])"
+        },
+        {
+          "name": "keyword.other.ivrit",
+          "match": "(?<![א-תA-Za-z0-9_-])(?:פונקציה|פונקציה-בר|רכיב|החזר|מחזיר|הדפס|ייבא|טען|סגנון|עיצוב|מעצב|מסך)(?![א-תA-Za-z0-9_-])"
+        }
+      ]
+    },
+    "builtin": {
+      "name": "support.function.ivrit",
+      "match": "(?<![א-תA-Za-z0-9_-])(?:אורך|מספר|טקסט|אם-לא|מילים|החלף|חתוך|מרוכז|גדול-מכל|קטן-מכל|סוג|מפתח|ערך|מיפוי|סינון|מיון|הצטרף|הפוך|הוסף|הסר|מכיל|איחוד|חיתוך|טווח|מספרים|מחרוזות|מערכים|מילים-לרשימה|לאורך|מספר-למחרוזת)(?![א-תA-Za-z0-9_-])"
+    },
+    "constant": {
+      "name": "constant.language.ivrit",
+      "match": "(?<![א-תA-Za-z0-9_-])(?:אמת|נכון|כן|שקר|לאנכון|ריק|אין-ערך|null)(?![א-תA-Za-z0-9_-])"
+    },
+    "operator": {
+      "name": "keyword.operator.ivrit",
+      "match": "=>|<=|>=|==|!=|\\+=|-=|\\*=|/=|\\*\\*|[-+*/%<>=!]|\\b(?:כפל|חלקי|שורש|מודל|חזקה|חזקה-שנייה|וגם|או|לא)\\b"
+    },
+    "number": {
+      "name": "constant.numeric.ivrit",
+      "match": "\\b[0-9]+(?:\\.[0-9]+)?\\b|#[0-9a-fA-F]{3,8}\\b"
+    },
+    "css-declaration": {
+      "patterns": [
+        {
+          "match": "^(\\s*)([א-ת][א-ת0-9_-]*)(\\s*)(:)(?!=)([^;{}]*)$",
+          "captures": {
+            "2": {
+              "name": "support.type.property-name.ivrit"
+            },
+            "4": {
+              "name": "punctuation.separator.key-value.ivrit"
+            },
+            "5": {
+              "patterns": [
+                {
+                  "include": "#css-value"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "entity.other.attribute-name.class.ivrit",
+          "match": "(?:^|(?<=\\s))\\.[א-תA-Za-z_][א-תA-Za-z0-9_-]*"
+        },
+        {
+          "name": "keyword.operator.combinator.ivrit",
+          "match": "&"
+        }
+      ]
+    },
+    "css-value": {
+      "patterns": [
+        {
+          "name": "support.constant.color.ivrit",
+          "match": "#(?:[0-9a-fA-F]{3,4}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})\\b|\\b(?:[א-ת]+)(?=[,)])"
+        },
+        {
+          "include": "#number"
+        },
+        {
+          "name": "support.constant.property-value.ivrit",
+          "match": "\\b[a-z-]+(?=\\()"
+        }
+      ]
+    }
+  }
+}
